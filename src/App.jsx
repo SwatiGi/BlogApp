@@ -16,6 +16,10 @@ const App = () => {
     // console.log(name,value)
     setValues((pre)=>({...pre,[name]:value}))
   }
+  let handleDelete = (indexToDelete) => {
+   setDispley(prev => prev.filter((_, index) => index !== indexToDelete));
+  console.log(id)
+  }
   return (
     <div>
       <h1>Your Blog</h1>
@@ -56,7 +60,6 @@ const App = () => {
         <button>POST BLOG</button>
         
       </form>
-    
       <hr />
       <h1>Blog Data</h1>
       <div className='container'>{display.length > 0 && display.map((el,i) => {
@@ -64,6 +67,8 @@ const App = () => {
         <h2>{el.title}</h2>
         <img src={el.image} alt="" />
         <p>{el.description}</p>
+      <button>Edit</button>
+      <button onClick={()=>handleDelete(i)}>Delete</button>
         </div>
       })}</div>
     </div>
